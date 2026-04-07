@@ -2,6 +2,8 @@
 
 Moderní webová aplikace pro sledování aktuálních cen kryptoměn v reálném čase. Projekt je postaven na čistém JavaScriptu bez použití frameworků, s důrazem na výkon, čistý kód a uživatelský zážitek (UX).
 
+![Náhled dashboardu](dashboard.png)
+
 ## 🌟 Klíčové vlastnosti
 
 * **Real-time Data:** Načítání aktuálních cen, tržní kapitalizace a 24h změn z CoinGecko API.
