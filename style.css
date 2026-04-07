@@ -1,0 +1,140 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --accent: #38bdf8;
+    --up: #22c55e;
+    --down: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.kontejner {
+    flex: 1;
+    max-width: 1400px; /* Zvětšeno z 1100px, aby se vešlo víc karet */
+    margin: 0 auto;
+    padding: 40px 5%; /* 5% padding po stranách vytvoří hezký prostor */
+    width: 100%;
+}
+
+header { text-align: center; margin-bottom: 40px; }
+
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.ovladani {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+input, select, button {
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+button {
+    background: var(--accent);
+    color: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.grid {
+    display: grid;
+    /* 200px je "bezpečnější" minimum, aby se jich vešlo víc vedle sebe */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px;
+    width: 100%;
+}
+
+/* KARTA */
+.karta {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #334155;
+    transition: 0.3s ease;
+    animation: nabeh 0.5s ease-out;
+}
+
+.karta:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+}
+
+.karta img { width: 60px; height: 60px; margin-bottom: 15px; }
+.cena { font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
+.zmena { padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+.nahoru { background: rgba(34, 197, 94, 0.1); color: var(--up); }
+.dolu { background: rgba(239, 68, 68, 0.1); color: var(--down); }
+
+/* SKELETON */
+.skeleton {
+    background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-img { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 15px; }
+.skeleton-text { height: 20px; width: 80%; margin: 10px auto; border-radius: 4px; }
+
+@keyframes nabeh {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* FOOTER */
+.hlavni-footer {
+    background-color: #020617;
+    color: var(--text-dim);
+    padding: 40px 20px;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+}
+
+.footer-odkazy { margin: 15px 0; display: flex; justify-content: center; gap: 20px; }
+.footer-odkazy a { color: var(--text-main); text-decoration: none; transition: 0.3s; }
+.footer-odkazy a:hover { color: var(--accent); }
+
+/* Na mobilech chceme karty pod sebou nebo max 2 */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    h1 { font-size: 1.8rem; }
+}
